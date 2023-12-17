@@ -1,0 +1,40 @@
+body {
+    background-color: #121212; /* Dark oil-like background color */
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.title {
+    font-size: 7em; /* Increased font size for the title */
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.countdown-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.countdown-item {
+    margin: 10px;
+    padding: 20px;
+    font-size: 6em; /* Adjusted font size for countdown items */
+    background-color: #333; /* Dark gray background for countdown items */
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+@media (max-width: 600px) {
+    .countdown-item {
+        font-size: 2em; /* Adjusted font size for smaller screens */
+    }
+}
