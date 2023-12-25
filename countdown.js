@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const newYearDate = new Date('January 1, 2024 00:00:00 GMT+0530').getTime();
+    const newYearDate = new Date('January 1, 2024 00:00:00 GMT+0530');
 
     function updateCountdown() {
+        // Use the 'Asia/Kolkata' time zone for the current date
         const currentDate = new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' });
         const currentDateTime = new Date(currentDate).getTime();
 
