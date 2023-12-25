@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(response => response.json())
             .then(data => {
                 const currentDateTime = new Date(data.utc_datetime).getTime();
-                const difference = newYearDate - currentDateTime;
+                const difference = newYearDate - currentDateTime - (23 * 1000); // Subtract 23 seconds
 
                 const days = Math.floor(difference / (1000 * 60 * 60 * 24));
                 const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
