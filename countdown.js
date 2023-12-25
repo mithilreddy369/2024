@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // Set the new year date in 'Asia/Kolkata' time zone
     const newYearDate = new Date('January 1, 2024 00:00:00 GMT+0530');
 
     function updateCountdown() {
