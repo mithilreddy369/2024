@@ -1,23 +1,27 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Set the new year date in 'Asia/Kolkata' time zone
     const newYearDate = new Date('January 1, 2024 00:00:00 GMT+0530');
 
     function updateCountdown() {
-        // Use the 'Asia/Kolkata' time zone for the current date
-        const currentDate = new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' });
-        const currentDateTime = new Date(currentDate).getTime();
+        // Fetch the current time in Asia/Kolkata time zone
+        fetch('https://worldtimeapi.org/api/timezone/Asia/Kolkata')
+            .then(response => response.json())
+            .then(data => {
+                const currentDateTime = new Date(data.utc_datetime).getTime();
+                const difference = newYearDate - currentDateTime;
 
-        const difference = newYearDate - currentDateTime;
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-        document.getElementById('days').innerHTML = days + 'd';
-        document.getElementById('hours').innerHTML = hours + 'h';
-        document.getElementById('minutes').innerHTML = minutes + 'm';
-        document.getElementById('seconds').innerHTML = seconds + 's';
+                document.getElementById('days').innerHTML = days + 'd';
+                document.getElementById('hours').innerHTML = hours + 'h';
+                document.getElementById('minutes').innerHTML = minutes + 'm';
+                document.getElementById('seconds').innerHTML = seconds + 's';
+            })
+            .catch(error => {
+                console.error('Error fetching time:', error);
+            });
     }
 
     setInterval(updateCountdown, 1000);
