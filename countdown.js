@@ -2,8 +2,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const newYearDate = new Date('January 1, 2024 00:00:00 GMT+0530').getTime();
 
     function updateCountdown() {
-        const currentDate = new Date().getTime() + (5.5 * 60 * 60 * 1000); // Add 5.5 hours for IST
-        const difference = newYearDate - currentDate;
+        const currentDate = new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' });
+        const currentDateTime = new Date(currentDate).getTime();
+
+        const difference = newYearDate - currentDateTime;
 
         const days = Math.floor(difference / (1000 * 60 * 60 * 24));
         const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
